@@ -1,0 +1,18 @@
+﻿@model DocGhiFile.Models.UserInfo
+@{
+    ViewBag.Title = "Profile";
+    //Lấy session
+    var user = Session["user"] as DocGhiFile.Models.UserInfo;
+}
+
+<h2>Profile</h2>
+
+<ul>
+    <li>User Name : @user.UserName</li>
+    <li>Password : @user.Password</li>
+    <li>Full Name : @user.FullName</li>
+    <li>Email : @user.Email</li>
+</ul>
+
+<a href="/Account/LogOff">Logg Off</a>
+
