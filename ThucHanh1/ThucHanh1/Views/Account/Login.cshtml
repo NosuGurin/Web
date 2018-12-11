@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Form đăng nhập</h2>
+
+<form action="/Account/Login" method="post">
+    <div>Tên đăng nhập:</div>
+    <input name="UserName" class="form-control" />
+
+    <div>Mật khẩu:</div>
+    <input name="Password" class="form-control" type="password" />
+
+    <div></div>
+    <label class="checkbox">
+        <input name="Remember" type="checkbox" value="true" />
+        Ghi nhớ tài khoản ?
+    </label>
+
+    <input type="submit" value="Login" class="btn btn-default" />
+</form>
+

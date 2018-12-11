@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Thông tin tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    //Lấy user từ session
+    var user = Session["user"] as ThucHanh1.Models.LoginModel;
+}
+
+<h2>Thông tin tài khoản</h2>
+<ul>
+    <li>Tên đăng nhập : @user.UserName</li>
+    <li>Mật khẩu : @user.Password</li>
+    <hr />
+    <a href="/Account/Logoff">Đăng xuất</a>
+</ul>
