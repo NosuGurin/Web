@@ -1,0 +1,36 @@
+﻿@model List<ThucHanh1.Models.ProductInfo>
+
+@{
+    ViewBag.Title = "Product List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Product List</h2>
+
+@foreach (var p in Model)
+{
+<ul>
+    <li>Name : @p.Name</li>
+    <li>Price : @p.Price USD</li>
+    <li>[<a href="/Product/Detail?Name=@p.Name">View</a>]</li>
+</ul>
+}
+
+@if (Request.Cookies["Items"] != null)
+{
+    var cookies = Request.Cookies["Items"];
+    <div style="position:fixed;right:10px;bottom:10px;">
+        <fieldset>
+            <legend>Product Viewed</legend>
+            @foreach (var Name in cookies.Values.AllKeys)
+            {
+                var Quantity = cookies.Values[Name];
+            <li>
+                [<a href="/Product/Detail?Name=@Name">View</a>]
+                [<a href="/Product/Remove?Name=@Name">Remove</a>]
+                @Name (@Quantity)
+            </li>
+            }
+        </fieldset>
+    </div>
+}
