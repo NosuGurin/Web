@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "ManualValidate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manual Validate</h2>
+
+@using (Html.BeginForm())
+{
+<table>
+    <tr>
+        <td>Email</td>
+        <td>@Html.TextBox("Email")</td>
+    </tr>
+    <tr>
+        <td>ConfirmEmail</td>
+        <td>@Html.TextBox("ConfirmEmail")</td>
+    </tr>
+    <tr>
+        <td>Age</td>
+        <td>@Html.TextBox("Age")</td>
+    </tr>
+    <tr>
+        <td>Salary</td>
+        <td>@Html.TextBox("Salary")</td>
+    </tr>
+    <tr>
+        <td>CreditCard</td>
+        <td>@Html.TextBox("CreditCard")</td>
+    </tr>
+    <tr>
+        <td>Website</td>
+        <td>@Html.TextBox("Website")</td>
+    </tr>
+    <tr>
+        <td>Photo</td>
+        <td>@Html.TextBox("Photo")</td>
+    </tr>
+    <tr>
+        <td>SaigonMotoNumber</td>
+        <td>@Html.TextBox("SaigonMotoNumber")</td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td>@Html.TextBox("Description")</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td><input type="submit" value="Save"></td>
+    </tr>
+</table>
+}
+
+@section scripts{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script>
+        $(function () {
+            $("form:eq(0)").validate({
+                rules: {
+                    Email: { required: true, email: true },
+                    ConfirmEmail: { required: true, equalTo: "#Email" },
+                    Age: { range: [16, 65] },
+                    Salary: { min: 2000000 },
+                    CreditCard: { creditcard: true },
+                    Website: { url: true },
+                    Photo: {regex : '((.gif)|(.jpg)|(.png))$'},
+                    SaigonMotoNumber: {regex:'^(5\\d-[A-Z]\\d-((\\d{4})|(\\d{3}\\.\\d{2})))$'},
+                    Description: { maxlength: 255 }
+                },
+                messages: {
+                    Email: { required: 'Vui lòng nhập email', email: 'Sai định dạng mail' },
+                    ConfirmEmail: { required: 'Vui lòng nhập email', equalTo: 'Không giống email' },
+                    Age: { range: 'Tuổi phải từ 16 đến 65' },
+                    Salary: { min: 'Lương tối thiểu phải là 2 triệu' },
+                    CreditCard: { creditcard: 'Vui lòng nhập đúng số thẻ tín dụng' },
+                    Website: { required: 'Vui lòng nhập đúng định dạng website' },
+                    Photo: {},
+                    SaigonMotoNumber: {},
+                    Description: { maxlength: 'Vui lòng nhập tối đa 255 ký tự' }
+                },
+                submitHandler: function (form) {
+                    alert("Chúc mừng bạn đã nhập đúng ");
+                    form.submit();
+                }
+            });
+        })
+    </script>
+    <script>
+        //Bổ sung kiểm lỗi
+        $.validator.addMethod("regex", function (value, element, regexp) {
+            var regex = new RegExp(regexp);
+            return this.optional(element) || regex.test(value);
+        }, "Vui lòng nhập đúng định dạng !");
+    </script>
+}

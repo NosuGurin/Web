@@ -1,0 +1,101 @@
+﻿@model ThucHanh2.Models.Employee
+
+@{
+    ViewBag.Title = "Validate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Validate</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <table>
+        <tr>
+            <td> @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td>
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.ConfirmEmail, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td>
+                @Html.EditorFor(model => model.ConfirmEmail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ConfirmEmail, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td> @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td>
+                @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td> @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td>
+                @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>@Html.LabelFor(model => model.CreditCard, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td>
+                @Html.EditorFor(model => model.CreditCard, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CreditCard, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td> @Html.LabelFor(model => model.Website, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td>
+                @Html.EditorFor(model => model.Website, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Website, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td> @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td>
+                @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td> @Html.LabelFor(model => model.SaigonMotoNumber, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td>
+                @Html.EditorFor(model => model.SaigonMotoNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SaigonMotoNumber, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>  @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td>
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Save" class="btn btn-default" />
+            </td>
+        </tr>
+
+    </table>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
